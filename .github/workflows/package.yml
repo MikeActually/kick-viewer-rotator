@@ -14,11 +14,11 @@ jobs:
         with:
           node-version: '18'
       - name: Create npm package zip
-        id: zip
-        uses: ataylorme/npm-pack-zip-action@1.0.0
-      - name: Upload package artifact
-        id: upload
-        uses: actions/upload-artifact@v1
+        uses: npm-pack-zip # Or the latest version
         with:
-          name: kick-viewer-rotator
-          path: 'kick-viewer-rotator.zip' # Uploads the generated zip file
+          path: './' # Optional: specify the path to your package if not the root
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-package-zip
+          path: '*.zip' # Uploads the generated zip file
