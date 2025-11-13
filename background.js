@@ -186,3 +186,8 @@ chrome.tabs.onRemoved.addListener((tabId) => {
 		activeTabId = null;
 	}
 });
+
+setInterval(() => {
+	// Perform a no-op operation or send a message to keep the service worker active
+	chrome.runtime.sendMessage({ type: "keepAlive" });
+}, 20000); // Send a message every 20 seconds
