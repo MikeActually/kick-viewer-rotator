@@ -14,11 +14,9 @@ jobs:
         with:
           node-version: '18'
       - name: Create npm package zip
-        uses: ataylorme/npm-pack-zip-action@v1
-        with:
-          path: './'
+        uses: ataylorme/npm-pack-zip-action@1.0.0
       - name: Upload package artifact
         uses: actions/upload-artifact@v4
         with:
-          name: kick-viewer-rotator
-          path: '*.zip'
+          name: npm-pack-zip
+          path: ${{ steps.zip.outputs.zip-path }}
