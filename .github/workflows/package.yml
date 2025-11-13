@@ -13,10 +13,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Save a zip of the build project
+      - name: Create npm package zip
         id: zip
         uses: ataylorme/npm-pack-zip-action@1.0.0
-      - uses: actions/upload-artifact@v1
+      - name: Upload package artifact
+        id: upload
+        uses: actions/upload-artifact@v1
         with:
-          name: npm-pack-zip
-          path: ${{ steps.zip.outputs.zip-path }}
+          name: kick-viewer-rotator
+          path: 'kick-viewer-rotator.zip' # Uploads the generated zip file
