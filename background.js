@@ -96,7 +96,7 @@ async function checkChannelStatus() {
 		nextChannel();
 	}
 
-	chrome.runtime.sendMessage({ command: "updateStatus" });
+	chrome.runtime.sendMessage({ command: "updateStatus" }, messageHandler);
 	doPolling();
 }
 
@@ -187,7 +187,20 @@ chrome.tabs.onRemoved.addListener((tabId) => {
 	}
 });
 
-setInterval(() => {
-	// Perform a no-op operation or send a message to keep the service worker active
-	chrome.runtime.sendMessage({ type: "keepAlive" });
-}, 20000); // Send a message every 20 seconds
+async function keepAlive() {
+	setInterval(() => {
+		// Perform a no-op operation or send a message to keep the service worker active
+		chrome.runtime.sendMessage({ type: "keepAlive" }, messageHandler);
+	}, 20000); // Send a message every 20 seconds
+}
+
+function messageHandler(response) {
+	if (chrome.runtime.lastError) {
+		console.warn("Could not establish connection. Receiving end does not exist. This is likely due to the extension not being active or the listener not being registered yet.", chrome.runtime.lastError.message);
+		// Handle the error, e.g., retry after a delay, or notify the user.
+		return;
+	}
+	console.log(response.farewell);
+}
+
+chrome.runtime.onStartup.addListener(keepAlive);
