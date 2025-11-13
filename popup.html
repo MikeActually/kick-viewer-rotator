@@ -36,11 +36,15 @@
 		<ul id="channelList"></ul>
 
 		<div class="form">
-			<input type="text" id="newChannel" placeholder="Add new channel..." />
-			<button id="addChannel">Add</button>
-
-			<input type="text" id="timeLimit" placeholder="Hours Per Channel" />
-			<button id="saveTimeLimit">Save</button>
+			<div><input type="text" id="newChannel" placeholder="Add new channel..." />
+				<button id="addChannel">Add</button>
+			</div>
+			<hr />
+			<div>
+				<label for="timeLimit">Hours to watch per channel</label>
+				<input type="text" id="timeLimit" placeholder="Enter hours here" />
+				<button id="saveTimeLimit">Save</button>
+			</div>
 		</div>
 		<button id="showstatus">🖥️ Show Status</button>
 	</div>

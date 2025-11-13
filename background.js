@@ -148,7 +148,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 			currentChannel,
 			isRunning,
 			channels,
-			
+
 		});
 	} else if (msg.command === "startRotation") {
 		isRunning = true;
@@ -172,3 +172,17 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
 chrome.runtime.onStartup.addListener(loadSettings);
 chrome.runtime.onInstalled.addListener(loadSettings);
+
+// Listen for when the active Kick tab is closed
+chrome.tabs.onRemoved.addListener((tabId) => {
+	if (tabId === activeTabId) {
+		console.log("Active Kick tab was closed — stopping rotation.");
+
+		// Stop all timers and reset state
+		clearInterval(pollIntervalHandle);
+		isRunning = false;
+		currentChannel = null;
+		channelStartTime = null;
+		activeTabId = null;
+	}
+});
