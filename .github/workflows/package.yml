@@ -14,11 +14,11 @@ jobs:
         with:
           node-version: '18'
       - name: Create npm package zip
-        uses: npm-pack-zip
+        uses: npm-pack-zip@latest
         with:
           path: './'
       - name: Upload package artifact
-        uses: actions/upload-artifact
+        uses: actions/upload-artifact@latest
         with:
           name: kick-viewer-rotator
           path: 'kick-viewer-rotator.zip' # Uploads the generated zip file
