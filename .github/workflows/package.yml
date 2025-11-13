@@ -13,10 +13,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-      - name: Create npm package zip
+      - name: Save a zip of the build project
+        id: zip
         uses: ataylorme/npm-pack-zip-action@1.0.0
-      - name: Upload package artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v1
         with:
           name: npm-pack-zip
           path: ${{ steps.zip.outputs.zip-path }}
