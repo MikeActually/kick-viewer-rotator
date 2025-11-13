@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Kick Channel Rotator</title>
+	<link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+	<h2>Kick Channel Rotator</h2>
+	<div id="statuspage">
+		<div id="status">
+			<p><b>Current:</b> <span id="current">None</span></p>
+		</div>
+
+		<table id="channelTable">
+			<thead>
+				<tr>
+					<th>Channel</th>
+					<th>Watched</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<div class="buttons">
+			<button id="start">▶️ Start</button>
+			<button id="pause">⏸️ Pause</button>
+			<button id="reset">🔄 Reset</button>
+			<button id="setup">⚙️ Setup</button>
+		</div>
+	</div>
+	<div id="channelspage">
+		<h2>Channel List</h2>
+		<ul id="channelList"></ul>
+
+		<div class="form">
+			<input type="text" id="newChannel" placeholder="Add new channel..." />
+			<button id="addChannel">Add</button>
+
+			<input type="text" id="timeLimit" placeholder="Hours Per Channel" />
+			<button id="saveTimeLimit">Save</button>
+		</div>
+		<button id="showstatus">🖥️ Show Status</button>
+	</div>
+	<script src="popup.js"></script>
+</body>
+
+</html>

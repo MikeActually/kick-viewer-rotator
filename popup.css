@@ -1,0 +1,54 @@
+body {
+	font-family: Arial, sans-serif;
+	width: 280px;
+	margin: 10px;
+}
+
+h2 {
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+#channelTable {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 6px;
+}
+
+#channelTable th,
+#channelTable td {
+	border-bottom: 1px solid #ddd;
+	padding: 4px 6px;
+	text-align: left;
+	font-size: 13px;
+}
+
+.buttons {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+button {
+	flex: 1;
+	margin: 0 2px;
+	padding: 6px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	background-color: #28a745;
+	color: white;
+	font-weight: bold;
+}
+
+button#pause {
+	background-color: #f0ad4e;
+}
+
+button#reset {
+	background-color: #dc3545;
+}
+
+#channelspage {
+	display: none;
+}

@@ -1,0 +1,22 @@
+{
+	"manifest_version": 3,
+	"name": "Kick Channel Rotator",
+	"version": "1.0",
+	"description": "Automatically cycles through Kick channels and tracks watch time.",
+	"permissions": [
+		"tabs",
+		"storage",
+		"alarms"
+	],
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	},
+	"action": {
+		"default_popup": "popup.html"
+	},
+	"icons": {
+		"48": "icon48.png",
+		"128": "icon128.png"
+	}
+}
