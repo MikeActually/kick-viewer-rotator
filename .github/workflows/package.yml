@@ -3,7 +3,7 @@ name: Build and Pack for Deployment
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
