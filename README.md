@@ -7,6 +7,7 @@ Chrome extension to rotate through Kick streamers as long as they are streaming 
 1. Download and extract zip from [latest release page](https://github.com/MikeActually/kick-viewer-rotator/releases/latest)
 1. Go to Chrome
 1. Access "Manage Extensions"
+1. Enable developer mode
 1. Click "Load Unpacked"
 1. Select directory including the files you downloaded
 1. Enable the Extension
