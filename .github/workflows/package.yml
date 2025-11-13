@@ -16,8 +16,7 @@ jobs:
       - name: Save a zip of the build project
         id: zip
         uses: ataylorme/npm-pack-zip-action@1.0.0
-      # Upload the npm zip artifact
       - uses: actions/upload-artifact@v1
         with:
-          name: kick-viewer-rotator
+          name: npm-pack-zip
           path: ${{ steps.zip.outputs.zip-path }}
