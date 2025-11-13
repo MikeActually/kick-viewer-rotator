@@ -1,7 +1,7 @@
 import { VIEW_TIME_MS, POLL_INTERVAL_MS } from "./config.js";
 
 let channels = [];
-let currentIndex = 0;
+let currentIndex = -1;
 let currentChannel = null;
 let activeTabId = null;
 let isRunning = false;
@@ -9,6 +9,7 @@ let isRunning = false;
 let watchTime = {};
 let channelStartTime = 0;
 let pollIntervalHandle = null;
+let keepAliveIntervalHandle = null;
 
 let timeLimit = null;
 
@@ -132,12 +133,14 @@ async function nextChannel() {
 }
 
 async function rotateChannels() {
+	currentIndex = -1;
 	await loadSettings();
 	if (!isRunning) return;
 	await nextChannel();
 }
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+	keepAlive();
 	if (msg.command === "resetWatchTime") {
 		Object.keys(watchTime).forEach(ch => (watchTime[ch] = 0));
 		saveWatchTime();
@@ -188,10 +191,12 @@ chrome.tabs.onRemoved.addListener((tabId) => {
 });
 
 async function keepAlive() {
-	setInterval(() => {
-		// Perform a no-op operation or send a message to keep the service worker active
-		chrome.runtime.sendMessage({ type: "keepAlive" }, messageHandler);
-	}, 20000); // Send a message every 20 seconds
+	if (!keepAliveIntervalHandle) {
+		keepAliveIntervalHandle = setInterval(() => {
+			// Perform a no-op operation or send a message to keep the service worker active
+			chrome.runtime.sendMessage({ type: "keepAlive" }, messageHandler);
+		}, 20000); // Send a message every 20 seconds
+	}
 }
 
 function messageHandler(response) {
