@@ -16,7 +16,7 @@ jobs:
       - name: Save a zip of the build project
         id: zip
         uses: ataylorme/npm-pack-zip-action@1.0.0
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         with:
           name: npm-pack-zip
           path: ${{ steps.zip.outputs.zip-path }}
