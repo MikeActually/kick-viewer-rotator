@@ -1,0 +1,5 @@
+{
+  "name": "kick-viewer-rotator",
+  "version": "1.0.0",
+  "description": "Chrome extension to rotate through Kick streamers as long as they are streaming Rust. You can add streamers and set a maximum number of hours to watch per streamer."
+}

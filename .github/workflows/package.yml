@@ -1,0 +1,24 @@
+name: Build and Pack for Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Create npm package zip
+        uses: npm-pack-zip
+        with:
+          path: './'
+      - name: Upload package artifact
+        uses: actions/upload-artifact
+        with:
+          name: kick-viewer-rotator
+          path: 'kick-viewer-rotator.zip' # Uploads the generated zip file
